@@ -1,0 +1,13 @@
+.pokemonList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 92vh;
+  width: 30rem;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.pokemonList table {
+  text-align: center;
+}
