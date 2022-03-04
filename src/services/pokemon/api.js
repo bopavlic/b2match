@@ -1,3 +1,5 @@
+import { transformToPokemonDetails } from './transformations';
+
 export const fetchPokemons = async () => {
   const response = await fetch(
     `${process.env.REACT_APP_POKEMON_API_BASE_URL}pokemon/?offset=0&limit=10/`,
@@ -22,5 +24,5 @@ export const fetchPokemonDetails = async (id) => {
   );
 
   const data = await response.json();
-  return data;
+  return transformToPokemonDetails(data);
 };

@@ -5,12 +5,11 @@ import { initialPokemonDetails } from './consts';
 import { fetchPokemonDetails } from '../../../services/pokemon/api';
 import { Card } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
-import { capitalizeFirstLetter } from '../../../helpers/capitalizeFirstLetter';
 
 const PokemonDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [pokemonDetails, setPokemonDetails] = useState('');
+  const [pokemonDetails, setPokemonDetails] = useState(initialPokemonDetails);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -24,30 +23,19 @@ const PokemonDetails = () => {
       }
       setIsLoading(false);
     })();
-  }, []);
-
-  console.log('pokemonDetails: ', pokemonDetails);
+  }, [id]);
 
   return (
     <div className='pokemonDetails'>
       {!isLoading ? (
         <Card style={{ width: '18rem' }}>
-          <Card.Img
-            variant='top'
-            src={pokemonDetails && pokemonDetails.sprites.front_default}
-          />
+          <Card.Img variant='top' src={pokemonDetails.image_url} />
           <Card.Body>
-            <Card.Title>
-              {capitalizeFirstLetter(
-                pokemonDetails && pokemonDetails.species.name
-              )}
-            </Card.Title>
+            <Card.Title>{pokemonDetails.name} :)</Card.Title>
             <Card.Text>
-              {`Hello my Pokemon friend! My name is ${capitalizeFirstLetter(
-                pokemonDetails && pokemonDetails.species.name
-              )} nice to meet you. My weight is ${
-                pokemonDetails && pokemonDetails.weight
-              } and my height is  ${pokemonDetails && pokemonDetails.height}.`}
+              {`Hello my Pokemon friend! My name is ${pokemonDetails.name} nice to meet you.
+               Let me in introduce myself. My favorite attack is ${pokemonDetails.favorite_attack},
+               weight: ${pokemonDetails.weight} and height: ${pokemonDetails.height}.`}
             </Card.Text>
             <Button onClick={() => navigate(-1)} variant='dark'>
               Go back
