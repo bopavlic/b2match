@@ -1,10 +1,9 @@
 import { capitalizeFirstLetter } from '../../helpers/capitalizeFirstLetter';
 
 export const transformToPokemonDetails = (response) => {
+  //destructuring
   const [moves] = response.moves;
   const { move } = moves;
-
-  console.log(move.name);
 
   return {
     image_url: response.sprites.front_default,

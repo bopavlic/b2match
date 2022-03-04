@@ -16,6 +16,7 @@ const PokemonList = () => {
     return id;
   };
 
+  //fetch pokemon list with pokemons
   useEffect(() => {
     (async () => {
       setIsLoading(true);

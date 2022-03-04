@@ -12,6 +12,7 @@ const PokemonDetails = () => {
   const [pokemonDetails, setPokemonDetails] = useState(initialPokemonDetails);
   const [isLoading, setIsLoading] = useState(false);
 
+  //fetch details about single pokemon
   useEffect(() => {
     (async () => {
       setIsLoading(true);
