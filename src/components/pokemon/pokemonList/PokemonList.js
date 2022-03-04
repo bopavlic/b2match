@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Table } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { fetchPokemons } from '../../../services/pokemon/api';
 import { initialPokemon } from './consts';
@@ -46,7 +46,9 @@ const PokemonList = () => {
                 <td>{getPokemonId(pokemon.url)}</td>
                 <td>{capitalizeFirstLetter(pokemon.name)}</td>
                 <td>
-                  <Link to='/pokemon'>click</Link>
+                  <Link to={`/pokemon/${getPokemonId(pokemon.url)}`}>
+                    <Button variant='dark'>Click me!</Button>
+                  </Link>
                 </td>
               </tr>
             ))
